@@ -1,0 +1,35 @@
+{
+  [
+    {
+      "id": 882,
+      "firstname": "Jayson",
+      "lastname": "Tatum",
+      "birth": {
+        "date": "1998-03-03",
+        "country": "USA"
+      },
+      "nba": {
+        "start": 2017,
+        "pro": 4
+      },
+      "height": {
+        "feets": "6",
+        "inches": "8",
+        "meters": "2.03"
+      },
+      "weight": {
+        "pounds": "210",
+        "kilograms": "95.3"
+      },
+      "college": "Duke",
+      "affiliation": "Duke/USA",
+      "leagues": {
+        "standard": {
+          "jersey": null,
+          "active": true,
+          "pos": "F-G"
+        }
+      }
+    }
+  ]
+}
