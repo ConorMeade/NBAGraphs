@@ -18,8 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 // connect to postgres db
 ConfigurationManager config = builder.Configuration;
 builder.Services.AddDbContext<MyDbContext>(options =>
-    options.UseSqlServer(
-        connectionString: config.GetConnectionString("DefaultConnection"))
+    options.UseNpgsql(config.GetConnectionString("DefaultConnection"))
 );
 
 // Add specific DataService for getting iex data, DI with IDataService
@@ -52,6 +51,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    //Console.WriteLine("swagger");
     app.UseSwagger();
     app.UseSwaggerUI();
 }

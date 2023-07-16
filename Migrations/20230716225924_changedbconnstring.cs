@@ -5,7 +5,7 @@
 namespace NBAGraphs.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialPlayerCreate : Migration
+    public partial class changedbconnstring : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,10 +14,11 @@ namespace NBAGraphs.Migrations
                 name: "teams",
                 columns: table => new
                 {
-                    team_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    city = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    logo_url = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    team_id = table.Column<string>(type: "text", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: true),
+                    city = table.Column<string>(type: "text", nullable: true),
+                    logo_url = table.Column<string>(type: "text", nullable: true),
+                    primary_color = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -28,13 +29,13 @@ namespace NBAGraphs.Migrations
                 name: "players",
                 columns: table => new
                 {
-                    player_id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    fname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    lname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    player_id = table.Column<string>(type: "text", nullable: false),
+                    fname = table.Column<string>(type: "text", nullable: true),
+                    lname = table.Column<string>(type: "text", nullable: true),
                     points_per_game = table.Column<float>(type: "real", nullable: false),
-                    games_played = table.Column<int>(type: "int", nullable: false),
-                    total_points = table.Column<int>(type: "int", nullable: false),
-                    fk_team_idteam_id = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    games_played = table.Column<int>(type: "integer", nullable: false),
+                    total_points = table.Column<int>(type: "integer", nullable: false),
+                    fk_team_idteam_id = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

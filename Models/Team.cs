@@ -11,4 +11,6 @@ public class Team
     public string? city { get; set; }
 
     public string? logo_url { get; set; }
+
+    public string? primary_color { get; set; }
 }
