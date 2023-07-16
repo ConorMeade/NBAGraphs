@@ -234,4 +234,7 @@ _Pvt_Extensions
 
 appsettings.json
 
+appsettings.Development.json
+
 .vs
+appsettings.Development.json

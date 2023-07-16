@@ -2,8 +2,6 @@
 
     Author: Conor Meade
 
-    Bootstrapped using Visual Studio.
-
     Date: 7/13/2023
 
 */
@@ -22,6 +20,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options)*/
 
 // Add specific DataService for getting iex data, DI with IDataService
+
+
 builder.Services.AddScoped<IDataService, DataService>();
 
 

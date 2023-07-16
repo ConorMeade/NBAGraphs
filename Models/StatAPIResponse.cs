@@ -3,7 +3,7 @@
 
 namespace NBAGraphs.Models
 {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class Game
     {
         public int id { get; set; }
@@ -45,7 +45,7 @@ namespace NBAGraphs.Models
         public string lastname { get; set; }
     }
 
-    public class Root
+    public class Season
     {
         public List<GameLog> GameLog { get; set; }
     }

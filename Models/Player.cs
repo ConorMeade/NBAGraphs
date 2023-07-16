@@ -7,7 +7,7 @@ namespace Swashbuckle.Models;
 /// <summary>
 /// Stock data
 /// </summary>
-public class PlayerViewModel
+public class PlayerModel
 {
     [Required] 
     public string? player_id { get; set; }

@@ -156,9 +156,9 @@ namespace StockTracker
 
 
         // BE VERY CAREFUL, only limited to 100 reqs/day
-        public async Task<List<GameLog>> GetPlayerGameLog()
+        public async Task<List<GameLog>> GetPlayerGameLog(string id)
         {
-            List<StockPriceResponse>? gameLog = null;
+            List<GameLog>? gameLog = null;
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,

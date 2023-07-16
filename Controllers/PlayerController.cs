@@ -8,13 +8,13 @@ namespace NBAGraphs.Controllers
     public class PlayerController : ControllerBase
     {
         // GET: PlayerController
-        public static HttpWebResponse GetPlayer(string id)
+       /* public static HttpWebResponse GetPlayer(string id)
         {
-            HttpWebRequest httpRequest = HttpWebRequest.Create(id);
+            HttpWebRequest httpRequest = HttpWebRequest.Create(url);
             httpRequest.Method = "GET";
 
             return httpRequest.GetResponse();
-        }
+        }*/
 
         // POST: PlayerController
        
