@@ -2,14 +2,11 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Swashbuckle.Models;
+namespace NBAGraphs.Models;
 
-/// <summary>
-/// Stock data
-/// </summary>
-public class PlayerModel
+public class Player
 {
-    [Required] 
+    [Required, Key] 
     public string? player_id { get; set; }
 
     public string? fname { get; set; }
@@ -22,5 +19,6 @@ public class PlayerModel
 
     public int total_points { get; set; }
 
-    public Team? team_id { get; set; }
+    [Key]
+    public Team? fk_team_id { get; set; }
 }

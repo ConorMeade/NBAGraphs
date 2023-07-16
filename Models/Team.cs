@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace Swashbuckle.Models;
-
+namespace NBAGraphs.Models;
 
 public class Team
 {
-    [Required]
+    [Required, Key]
     public string? team_id { get; set; }
 
     public string? name { get; set; }

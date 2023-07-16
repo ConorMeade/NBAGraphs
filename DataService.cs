@@ -93,7 +93,7 @@ namespace StockTracker
         /// <param name="startDate">Beginning date that we want stock data from</param>
         /// <param name="endDate">End date that we want stock data from</param>
         ///
-        private static List<StockPriceResponse> PruneStockData(List<StockPriceResponse> stockData, DateTime startDate, DateTime endDate) {
+ /*       private static List<StockPriceResponse> PruneStockData(List<StockPriceResponse> stockData, DateTime startDate, DateTime endDate) {
 
 
             List<StockPriceResponse> prunedStockData = new List<StockPriceResponse>();
@@ -108,7 +108,7 @@ namespace StockTracker
             return prunedStockData;
 
         }
-
+*/
 
         /// <summary>
         /// Asynchronously get stock data from iex cloud. Call separate functions for determining parameters.
@@ -119,7 +119,7 @@ namespace StockTracker
         /// <param name="startDate">Beginning date that we want stock data from</param>
         /// <param name="endDate">End date that we want stock data from</param>
         /// 
-        public async Task<List<StockPriceResponse>> GetIEXData(string tickerSymbol, DateTime startDate, DateTime endDate)
+        /*public async Task<List<StockPriceResponse>> GetIEXData(string tickerSymbol, DateTime startDate, DateTime endDate)
         {
             List<StockPriceResponse>? stockData = null;
             double daysBetween = GetDaysBetween(startDate, endDate);
@@ -152,7 +152,7 @@ namespace StockTracker
             }
 
             return stockData.ToList();
-        }
+        }*/
 
 
         // BE VERY CAREFUL, only limited to 100 reqs/day

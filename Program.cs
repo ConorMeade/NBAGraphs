@@ -11,17 +11,18 @@ using Microsoft.OpenApi.Models;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using NBAGraphs.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// connect to postgres db
 ConfigurationManager config = builder.Configuration;
-/*
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-options)*/
+builder.Services.AddDbContext<MyDbContext>(options =>
+    options.UseSqlServer(
+        connectionString: config.GetConnectionString("DefaultConnection"))
+);
 
 // Add specific DataService for getting iex data, DI with IDataService
-
-
 builder.Services.AddScoped<IDataService, DataService>();
 
 
@@ -41,8 +42,8 @@ builder.Services.AddSwaggerGen(options =>
         });
 
         // This ensures we get the proper xml file on different OS
-        var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-        options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+        //var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 
     });
 
