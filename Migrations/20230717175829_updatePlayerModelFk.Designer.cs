@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NBAGraphs.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20230716225924_changedbconnstring")]
-    partial class changedbconnstring
+    [Migration("20230717175829_updatePlayerModelFk")]
+    partial class updatePlayerModelFk
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,8 +29,8 @@ namespace NBAGraphs.Migrations
                     b.Property<string>("player_id")
                         .HasColumnType("text");
 
-                    b.Property<string>("fk_team_idteam_id")
-                        .HasColumnType("text");
+                    b.Property<float>("assists_per_game")
+                        .HasColumnType("real");
 
                     b.Property<string>("fname")
                         .HasColumnType("text");
@@ -41,15 +41,22 @@ namespace NBAGraphs.Migrations
                     b.Property<string>("lname")
                         .HasColumnType("text");
 
+                    b.Property<int>("player_team")
+                        .HasColumnType("integer");
+
                     b.Property<float>("points_per_game")
+                        .HasColumnType("real");
+
+                    b.Property<int>("rapid_id")
+                        .HasColumnType("integer");
+
+                    b.Property<float>("rebounds_per_game")
                         .HasColumnType("real");
 
                     b.Property<int>("total_points")
                         .HasColumnType("integer");
 
                     b.HasKey("player_id");
-
-                    b.HasIndex("fk_team_idteam_id");
 
                     b.ToTable("players");
                 });
@@ -74,15 +81,6 @@ namespace NBAGraphs.Migrations
                     b.HasKey("team_id");
 
                     b.ToTable("teams");
-                });
-
-            modelBuilder.Entity("NBAGraphs.Models.Player", b =>
-                {
-                    b.HasOne("NBAGraphs.Models.Team", "fk_team_id")
-                        .WithMany()
-                        .HasForeignKey("fk_team_idteam_id");
-
-                    b.Navigation("fk_team_id");
                 });
 #pragma warning restore 612, 618
         }

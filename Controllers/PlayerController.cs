@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NBAGraphs.Data;
 using NBAGraphs.Models;
+using StockTracker;
 
 namespace NBAGraphs.controllers
 {
@@ -15,10 +16,12 @@ namespace NBAGraphs.controllers
     public class PlayerController : ControllerBase
     {
         private readonly MyDbContext _context;
+        private readonly IDataService _dataService;
 
-        public PlayerController(MyDbContext context)
+        public PlayerController(MyDbContext context, IDataService ds)
         {
             _context = context;
+            _dataService = ds;
         }
 
         // GET: api/Player
@@ -129,6 +132,13 @@ namespace NBAGraphs.controllers
 
             return NoContent();
         }
+
+        // POST: api/Player/rapidapi
+        //[HttpPost]
+        //public async Task<ActionResult<Player>> GetPlayerGameLog(string rapidId)
+        //{
+
+        //}
 
         private bool PlayerExists(string id)
         {

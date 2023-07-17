@@ -5,7 +5,7 @@
 namespace NBAGraphs.Migrations
 {
     /// <inheritdoc />
-    public partial class changedbconnstring : Migration
+    public partial class updatePlayerModel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,6 +33,8 @@ namespace NBAGraphs.Migrations
                     fname = table.Column<string>(type: "text", nullable: true),
                     lname = table.Column<string>(type: "text", nullable: true),
                     points_per_game = table.Column<float>(type: "real", nullable: false),
+                    assists_per_game = table.Column<float>(type: "real", nullable: false),
+                    rebounds_per_game = table.Column<float>(type: "real", nullable: false),
                     games_played = table.Column<int>(type: "integer", nullable: false),
                     total_points = table.Column<int>(type: "integer", nullable: false),
                     fk_team_idteam_id = table.Column<string>(type: "text", nullable: true)
