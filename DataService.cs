@@ -91,7 +91,7 @@ namespace StockTracker
             playerInfo.games_played = gamesPlayed;
             playerInfo.total_points = total_points;
             playerInfo.rapid_id = rapidId;
-            playerInfo.player_team = 26;
+            playerInfo.team_id = "26";
 
             return playerInfo;
         }

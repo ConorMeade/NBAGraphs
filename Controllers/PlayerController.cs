@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NBAGraphs.Data;
 using NBAGraphs.Models;
@@ -28,10 +29,10 @@ namespace NBAGraphs.controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Player>>> Getplayers()
         {
-          if (_context.players == null)
-          {
-              return NotFound();
-          }
+            if (_context.players == null)
+            {
+                return NotFound();
+            }
             return await _context.players.ToListAsync();
         }
 
@@ -39,10 +40,10 @@ namespace NBAGraphs.controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Player>> GetPlayer(string id)
         {
-          if (_context.players == null)
-          {
-              return NotFound();
-          }
+            if (_context.players == null)
+            {
+                return NotFound();
+            }
             var player = await _context.players.FindAsync(id);
 
             if (player == null)
@@ -51,6 +52,79 @@ namespace NBAGraphs.controllers
             }
 
             return player;
+        }
+
+        //GET: api/Player/LeadingScorers
+        [HttpGet("LeadingScorers")]
+        public async Task<ActionResult<IEnumerable<PpgModel>>> GetLeadingScorers()
+        {
+            if (_context.players == null)
+            {
+                return NotFound();
+            }
+
+            var entryPoint = (from p in _context.players
+                              join t in _context.teams
+                              on p.team_id equals t.team_id
+                              select new PpgModel {
+                                  firstName = p.fname,
+                                  lastName = p.lname,
+                                  ppg = p.points_per_game,
+                                  primary_color = t.primary_color,
+                              });
+            var list = await entryPoint.ToListAsync().ConfigureAwait(false);
+
+            return entryPoint.ToList();
+        }
+
+
+        //GET: api/Player/LeadingAssists
+        [HttpGet("LeadingAssists")]
+        public async Task<ActionResult<IEnumerable<ApgModel>>> GetLeadingAssists()
+        {
+            if (_context.players == null)
+            {
+                return NotFound();
+            }
+
+            var entryPoint = (from p in _context.players
+                              join t in _context.teams
+                              on p.team_id equals t.team_id
+                              select new ApgModel
+                              {
+                                  firstName = p.fname,
+                                  lastName = p.lname,
+                                  apg = p.assists_per_game,
+                                  primary_color = t.primary_color,
+                              });
+            var list = await entryPoint.ToListAsync().ConfigureAwait(false);
+
+            return entryPoint.ToList();
+        }
+
+
+        //GET: api/Player/LeadingRebounds
+        [HttpGet("LeadingRebounds")]
+        public async Task<ActionResult<IEnumerable<RpgModel>>> GetLeadingRebounds()
+        {
+            if (_context.players == null)
+            {
+                return NotFound();
+            }
+
+            var entryPoint = (from p in _context.players
+                              join t in _context.teams
+                              on p.team_id equals t.team_id
+                              select new RpgModel
+                              {
+                                  firstName = p.fname,
+                                  lastName = p.lname,
+                                  rpg = p.rebounds_per_game,
+                                  primary_color = t.primary_color,
+                              });
+            var list = await entryPoint.ToListAsync().ConfigureAwait(false);
+
+            return entryPoint.ToList();
         }
 
         // PUT: api/Player/5
@@ -132,13 +206,6 @@ namespace NBAGraphs.controllers
 
             return NoContent();
         }
-
-        // POST: api/Player/rapidapi
-        //[HttpPost]
-        //public async Task<ActionResult<Player>> GetPlayerGameLog(string rapidId)
-        //{
-
-        //}
 
         private bool PlayerExists(string id)
         {

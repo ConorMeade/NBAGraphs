@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NBAGraphs.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20230717175829_updatePlayerModelFk")]
-    partial class updatePlayerModelFk
+    [Migration("20230717191940_updateModels")]
+    partial class updateModels
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,9 +41,6 @@ namespace NBAGraphs.Migrations
                     b.Property<string>("lname")
                         .HasColumnType("text");
 
-                    b.Property<int>("player_team")
-                        .HasColumnType("integer");
-
                     b.Property<float>("points_per_game")
                         .HasColumnType("real");
 
@@ -52,6 +49,10 @@ namespace NBAGraphs.Migrations
 
                     b.Property<float>("rebounds_per_game")
                         .HasColumnType("real");
+
+                    b.Property<string>("team_id")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("total_points")
                         .HasColumnType("integer");

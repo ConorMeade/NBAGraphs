@@ -4,7 +4,7 @@ namespace NBAGraphs.Models;
 public class Team
 {
     [Required, Key]
-    public string? team_id { get; set; }
+    public string team_id { get; set; }
 
     public string? name { get; set; }
 
@@ -13,4 +13,6 @@ public class Team
     public string? logo_url { get; set; }
 
     public string? primary_color { get; set; }
+
+    public string? rapid_id { get; }
 }

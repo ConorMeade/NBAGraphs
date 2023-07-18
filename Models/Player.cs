@@ -27,5 +27,5 @@ public class Player
     public int rapid_id { get; set; }
 
     [ForeignKey("Team")]
-    public int player_team { get; set; }
+    public string team_id { get; set; }
 }

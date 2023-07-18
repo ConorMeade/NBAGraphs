@@ -38,9 +38,6 @@ namespace NBAGraphs.Migrations
                     b.Property<string>("lname")
                         .HasColumnType("text");
 
-                    b.Property<int>("player_team")
-                        .HasColumnType("integer");
-
                     b.Property<float>("points_per_game")
                         .HasColumnType("real");
 
@@ -49,6 +46,10 @@ namespace NBAGraphs.Migrations
 
                     b.Property<float>("rebounds_per_game")
                         .HasColumnType("real");
+
+                    b.Property<string>("team_id")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("total_points")
                         .HasColumnType("integer");
