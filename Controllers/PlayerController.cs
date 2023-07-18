@@ -74,7 +74,7 @@ namespace NBAGraphs.controllers
                               });
             var list = await entryPoint.ToListAsync().ConfigureAwait(false);
 
-            return entryPoint.ToList();
+            return entryPoint.OrderByDescending(x => x.ppg).ToList();
         }
 
 
@@ -99,7 +99,7 @@ namespace NBAGraphs.controllers
                               });
             var list = await entryPoint.ToListAsync().ConfigureAwait(false);
 
-            return entryPoint.ToList();
+            return entryPoint.OrderByDescending(x => x.apg).ToList();
         }
 
 
@@ -124,7 +124,7 @@ namespace NBAGraphs.controllers
                               });
             var list = await entryPoint.ToListAsync().ConfigureAwait(false);
 
-            return entryPoint.ToList();
+            return entryPoint.OrderByDescending(x => x.rpg).ToList();
         }
 
         // PUT: api/Player/5

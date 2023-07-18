@@ -1,4 +1,4 @@
-import Graph from "./components/Graph";
+import Graph from "./components/Graph.js";
 import { Home } from "./components/Home";
 
 const AppRoutes = [
@@ -7,7 +7,7 @@ const AppRoutes = [
     element: <Home />
   },
   {
-    path: '/fetch-data',
+    path: '/Graph',
     element: <Graph />
   }
 ];
