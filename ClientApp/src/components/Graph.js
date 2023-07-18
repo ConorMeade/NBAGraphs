@@ -20,6 +20,7 @@ function Graph() {
   const [rebounds, setRebounds] = useState([]);
   const [assists, setAssists] = useState([]);
   const [displayType, setDisplayType] = useState(1)
+  const [lbls , setLbls] = useState([])
   const options = {}
 
   useEffect(() => {
@@ -91,8 +92,8 @@ function Graph() {
 
 
   const labels = points.map((obj) => obj.lastName)
+  console.log("labels: ", labels)
 
-  const [lbls, setLbls] = useState(labels)
   const pointsDataPts = points.map(obj => {
     return { label: obj.lastName, data: [obj.ppg], backgroundColor: "#" + obj.primary_color }
   });
@@ -106,29 +107,28 @@ function Graph() {
   });
 
   const pointsGraphData = {
-    labels: points.map((obj) => obj.lastName),
+    labels: ["Points Per Game Leaders 2022-23"],
     datasets: pointsDataPts,
     borderColor: 'black',
     borderWidth: 1,
   }
 
   const assistsGraphData = {
-    labels: assists.map((obj) => obj.lastName),
+    labels: ["Assists Per Game Leaders 2022-23"],
     datasets: assistsDataPoints,
     borderColor: 'black',
     borderWidth: 1,
   }
 
   const reboundsGraphData = {
-    labels: rebounds.map((obj) => obj.lastName),
+    labels: ["Rebounds Per Game Leaders 2022-23"],
     datasets: reboundsDataPts,
     borderColor: 'black',
     borderWidth: 1,
   }
 
-  console.log(pointsGraphData)
-  console.log(assistsGraphData)
-  console.log(reboundsGraphData)
+  // console.log(assistsGraphData)
+  // console.log(reboundsGraphData)
 
   if(displayType === 1) {
     return (
