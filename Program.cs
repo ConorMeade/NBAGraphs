@@ -36,8 +36,8 @@ builder.Services.AddSwaggerGen(options =>
         options.SwaggerDoc("v1", new OpenApiInfo
         {
             Version = "v1",
-            Title = "StockData API",
-            Description = "An ASP.NET Core Web API for generating historical stock price data, chiefly daily returns",
+            Title = "NBAGraphs API",
+            Description = "An ASP.NET Core Web API for gathering NBA data and visualizing it with D3.js",
         });
 
         // This ensures we get the proper xml file on different OS
