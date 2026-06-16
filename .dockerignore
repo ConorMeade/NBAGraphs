@@ -1,0 +1,8 @@
+**/bin/
+**/obj/
+**/node_modules/
+ClientApp/build/
+.git/
+.vs/
+.vscode/
+*.user
