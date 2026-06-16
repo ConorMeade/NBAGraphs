@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: nbagraphs
+      POSTGRES_PASSWORD: devpassword          # dev only — see note below
+      POSTGRES_DB: nbagraphs
+    ports:
+      - "5432:5432"                           # optional, lets you inspect the DB locally
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:                              # so the app waits until the DB is actually ready
+      test: ["CMD-SHELL", "pg_isready -U nbagraphs"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: .                                  # uses the Dockerfile we wrote
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=nbagraphs;Username=nbagraphs;Password=devpassword"
+
+volumes:
+  pgdata:
