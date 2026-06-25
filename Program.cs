@@ -7,6 +7,7 @@
 */
 
 using StockTracker;
+using NBAGraphs;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
@@ -23,6 +24,9 @@ builder.Services.AddDbContext<MyDbContext>(options =>
 
 // Add specific DataService for getting iex data, DI with IDataService
 builder.Services.AddScoped<IDataService, DataService>();
+
+// NBA.com stats API - calls stats.nba.com directly, no API key needed
+builder.Services.AddHttpClient<INbaStatsService, NbaStatsService>();
 
 
 // Add services to the container.
